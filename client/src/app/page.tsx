@@ -1,9 +1,24 @@
 "use client"
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.scss';
 import ProgressBar from "@ramonak/react-progress-bar";
+import { getAllTodo, putTodo, patchTodo, deleteTodo, getTodoId } from './utils/fetchTodos'; 
 
 export default function Home() {
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const todosData = await getAllTodo();
+      setTodos(todosData);
+    } catch (error) {
+      console.error('Error fetching todos:', error);
+    }
+  };
 
   return (
     <>
@@ -29,11 +44,19 @@ export default function Home() {
               </div>
               <p className='completed-text'>... completed</p>
             </div>
-
+            <div className="right-side">
+              <ul>
+                {todos.map(todo => (
+                  <li key={todo.id}>
+                    <p>{todo.title}</p>
+                    <p>{todo.completed ? 'Completed' : 'Not Completed'}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </main>
     </>
   );
 }
-
