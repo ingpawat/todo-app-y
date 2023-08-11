@@ -15,6 +15,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
 
         .progress-box {
             width: 100%;
@@ -24,16 +25,20 @@
             background: #E07C7C;
             display: flex;
             flex-direction: row;
-            /* Change to row layout */
             justify-content: space-between;
-            /* Space items between them */
 
             .left-side {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 padding: 15px;
-                /* Add some padding for spacing */
+
+                .progress-bar-center {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 99;
+                }
             }
 
             .progress-title {
@@ -43,7 +48,7 @@
                 font-weight: 500;
                 line-height: normal;
                 margin: 0;
-                /* Remove margin to align properly */
+
             }
 
             .completed-text {
@@ -53,15 +58,103 @@
                 font-weight: 400;
                 line-height: normal;
                 margin: 0;
-                /* Remove margin to align properly */
+
+            }
+        }
+
+        .task-container {
+            .task-title {
+                color: #000;
+                font-family: Roboto;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                margin-top: 3%;
+            }
+
+            .task-capsule {
+                width: 518px;
+                height: 46px;
+                margin-top: 3%;
+                border-radius: 9999px;
+                background: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+                transition: opacity 0.5s ease-in-out;
+                /* Add a transition for opacity */
+
+                .tick-box {
+                    width: 22px;
+                    height: 22px;
+                    border-radius: 6px;
+                    border: 2px solid #585292;
+                    cursor: pointer;
+                }
+
+                .todo-title {
+                    width: 435px;
+                    height: 19px;
+                    flex-shrink: 0;
+                    color: #2E2E2E;
+                    font-family: Roboto;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 10px;
+                }
+
+                .add-your-todo {
+                    color: #BCBCBC;
+                    font-family: Roboto;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    text-align: left;
+                }
             }
         }
     }
+}
 
-    .progress-bar-center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 99;
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .task-container .task-capsule {
+        width: 100%;
+        margin-top: 5%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #585292;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    margin-top: 20%;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }
