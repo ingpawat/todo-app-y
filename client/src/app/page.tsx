@@ -14,7 +14,7 @@ export default function Home() {
               <p className='progress-title'>Progress</p>
               <div className='progress-bar-center'>
                 <ProgressBar
-                  completed={80}
+                  completed={50}
                   bgColor="#fff"
                   height="7.343px"
                   width="480px"
