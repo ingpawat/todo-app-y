@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import './style.scss';
 import ProgressBar from "@ramonak/react-progress-bar";
-import { getAllTodo, patchTodo } from './utils/fetchTodos';
+import { getAllTodo, patchTodo, postTodo } from './utils/fetchTodos';
 import Image from 'next/image';
 import TickBox from '../app/assets/tickBox.svg';
 import Dot from '../app/assets/3dot.svg'
@@ -15,7 +15,7 @@ export default function Home() {
     const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
     const [todoIdforEditDelete, setTodoIdforEditDelete] = useState<string | null>(null);
     const [howManyCompleted, setHowManyCompleted] = useState<number>(0);
-    const [newTodoTitle, setNewTodoTitle] = useState<string | null>('');
+    const [newTodoTitle, setNewTodoTitle] = useState<string>('');
 
 
     const fetchData = async () => {
@@ -51,10 +51,25 @@ export default function Home() {
         fetchData();
     }, []);
 
+    const handleAddTodo = async () => {
+        try {
+            if (newTodoTitle.trim() === '') return;
+    
+            const newTodo = { title: newTodoTitle, completed: false };
+            await postTodo(newTodo);
+            setNewTodoTitle('');
+            fetchData();
+        } catch (error) {
+            console.error('Error adding todo:', error);
+        }
+    };
+
+    console.log(newTodoTitle)
+
     return (
         <>
             <main className='main'>
-                <div className='container'>
+            <div className='container' >
                     <div className='progress-box'>
                         <div className="left-side">
                             <p className='progress-title'>Progress</p>
@@ -131,9 +146,15 @@ export default function Home() {
                             ))}
                             <div className='task-capsule-add-todo'>
                                 <input
+                                    className='add-todo-type-field'
                                     type='text'
                                     value={newTodoTitle}
                                     onChange={e => setNewTodoTitle(e.target.value)}
+                                    onKeyDown={e => {
+                                        if (e.key === 'Enter') {
+                                            handleAddTodo(newTodoTitle);
+                                        }
+                                    }}
                                     placeholder='Add your todo...'
                                 />
                             </div>

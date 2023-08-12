@@ -20,14 +20,14 @@ export async function getTodoId(todoId: string) {
   }
 }
 
-// export async function putTodo(todoId: any, updatedTodo: any) {
-//   try {
-//     const response = await axios.put(`${BASE_URL}/todos/${todoId}`, updatedTodo);
-//     return response.data;
-//   } catch (error) {
-//     throw new Error('Error while updating a todo');
-//   }
-// }
+export async function postTodo(newTodo: string) {
+  try {
+      const response = await axios.post(`${BASE_URL}/todos`, newTodo);
+      return response.data;
+  } catch (error) {
+      throw new Error('Error while adding a new todo');
+  }
+}
 
 export async function patchTodo(todoId: string, updatedFields: any) {
   try {
