@@ -145,6 +145,21 @@
                     padding-left: 10px;
                 }
 
+                .completed-todo{
+                    width: 435px;
+                    height: 19px;
+                    color: #2E2E2E;
+                    font-family: Roboto;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 10px;
+                    text-decoration: line-through
+                }
+
                 .add-your-todo {
                     width: 435px;
                     height: 19px;

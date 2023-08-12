@@ -20,9 +20,9 @@ export async function getTodoId(todoId: number) {
   }
 }
 
-export async function putTodo(todoId: number, updatedTodo: string) {
+export async function putTodo(todoId: any, updatedTodo: any) {
   try {
-    const response = await axios.put(`${BASE_URL}/todos/${todoId}`);
+    const response = await axios.put(`${BASE_URL}/todos/${todoId}`, updatedTodo);
     return response.data;
   } catch (error) {
     throw new Error('Error while updating a todo');
@@ -38,10 +38,10 @@ export async function patchTodo(todoId: number, updatedFields: string) {
   }
 }
 
-export async function deleteTodo(todoId: number) {
-  try {
-    await axios.delete(`${BASE_URL}/todos/${todoId}`);
-  } catch (error) {
-    throw new Error('Error while deleting a todo');
-  }
-}
+// export async function deleteTodo(todoId: number) {
+//   try {
+//     await axios.delete(`${BASE_URL}/todos/${todoId}`);
+//   } catch (error) {
+//     throw new Error('Error while deleting a todo');
+//   }
+// }

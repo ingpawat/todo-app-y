@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import './style.scss';
 import ProgressBar from "@ramonak/react-progress-bar";
-import { getAllTodo } from './utils/fetchTodos';
+import { getAllTodo, patchTodo } from './utils/fetchTodos';
 import Image from 'next/image';
 import TickBox from '../app/assets/tickBox.svg';
 import Dot from '../app/assets/3dot.svg'
@@ -12,12 +12,9 @@ import EditDeleteDialog from '@/app/components/edit-delete-dialog/edit-delete-di
 export default function Home() {
     const [todos, setTodos] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [selectedTodoId, setSelectedTodoId] = useState(null);
     const [isDialogOpen, setDialogOpen] = useState(false);
-
-    useEffect(() => {
-        fetchData();
-    }, []);
+    const [todoIdforEditDelete, settodoIdforEditDelete] = useState(null);
+    const [howManyCompleted, setHowManyCompleted] = useState(0);
 
     const fetchData = async () => {
         try {
@@ -29,19 +26,29 @@ export default function Home() {
         }
     };
 
-    const handleTickClick = (todoId) => {
-        if (selectedTodoId === todoId) {
-            setSelectedTodoId(null);
-        } else {
-            setSelectedTodoId(todoId);
+    const handleTickClick = async (todoId: number, updatedFields: string) => {
+        try {
+            const todo = todos.find(todo => todo.id === todoId);
+            const updatedFields = { completed: !todo.completed };
+            await patchTodo(todoId, updatedFields);
+            console.log(`Todo marked as ${updatedFields.completed ? 'completed' : 'incomplete'}`);
+            fetchData();
+        } catch (error) {
+            console.error('Error updating todo:', error);
         }
     };
 
-    const handleToDoId = (todoId) => {
-        setSelectedTodoId(todoId);
-    }
+    const completeCount = () => {
+        return todos.filter(todo => todo.completed).length;
+    };
 
-    console.log(selectedTodoId);
+    useEffect(() => {
+        setHowManyCompleted(completeCount());
+    }, [todos]);
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     return (
         <>
@@ -52,20 +59,20 @@ export default function Home() {
                             <p className='progress-title'>Progress</p>
                             <div className='progress-bar-center'>
                                 <ProgressBar
-                                    completed={50}
-                                    bgColor="#fff"
-                                    height="7.343px"
-                                    width="480px"
-                                    borderRadius="999px"
-                                    labelAlignment="outside"
-                                    isLabelVisible={false}
-                                    baseBgColor="#3B3B3B"
-                                    labelColor="#e80909"
-                                    animateOnRender
-                                    maxCompleted={100}
+                                     completed={(howManyCompleted / todos.length) * 100}
+                                     bgColor="#fff"
+                                     height="7.343px"
+                                     width="480px"
+                                     borderRadius="999px"
+                                     labelAlignment="outside"
+                                     isLabelVisible={false}
+                                     baseBgColor="#3B3B3B"
+                                     labelColor="#e80909"
+                                     animateOnRender
+                                     maxCompleted={100}
                                 />
                             </div>
-                            <p className='completed-text'>... completed</p>
+                            <p className='completed-text'>{howManyCompleted} completed</p>
                         </div>
                     </div>
                     {loading ? (
@@ -84,31 +91,38 @@ export default function Home() {
                                     {/* Tick box */}
                                     <div
                                         className='tick-box'
-                                        onClick={() => handleTickClick(todo.id)}
+                                        onClick={() => handleTickClick(todo.id, '')}
                                         style={{
-                                            backgroundColor: selectedTodoId === todo.id ? '#585292' : 'transparent'
+                                            backgroundColor: todo.completed ? '#585292' : 'transparent'
                                         }}
                                     >
                                         <Image src={TickBox} alt='TickBox' width={17} height={17} />
                                     </div>
 
                                     {/* Todo - Title */}
-                                    <p className='todo-title'>{todo.title}</p>
+                                    <p
+                                        className={todo.completed ? 'completed-todo' : 'todo-title'}
+                                        onClick={() => handleToDoId(todo.id)}
+                                    >
+                                        {todo.title}
+                                    </p>
 
                                     {/* 3 Dots click to open the edit delete dialog */}
-                                    <a onClick={(key) => {
+                                    <a onClick={() => {
                                         setDialogOpen(true);
-                                        handleToDoId(todo.id);
+                                        settodoIdforEditDelete(todo.id);
                                     }}>
                                         <Image src={Dot} alt='Dot' width={17} height={17} style={{ cursor: 'pointer' }} />
                                     </a>
-                                    {isDialogOpen && selectedTodoId === todo.id && (<>
-                                        <div className='edit-delete-dialog-warpper' style={{ zIndex: 90 }} >
-        <EditDeleteDialog todoId={selectedTodoId} key={todo.id} />
-    </div>
-     <div className='background' onClick={() => setDialogOpen(false)} style={{ zIndex: 50 }} /> {/* Updated background element */}</>
 
-)}
+                                    {isDialogOpen && todoIdforEditDelete === todo.id && (
+                                        <>
+                                            <div className='edit-delete-dialog-warpper' style={{ zIndex: 90 }} >
+                                                <EditDeleteDialog todoId={todoIdforEditDelete} key={todo.id} />
+                                            </div>
+                                            <div className='background' onClick={() => setDialogOpen(false)} style={{ zIndex: 50 }} />
+                                        </>
+                                    )}
                                 </div>
                             ))}
                             <div className='task-capsule'>

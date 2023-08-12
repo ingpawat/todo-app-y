@@ -131,6 +131,20 @@
   align-items: center;
   padding-left: 10px;
 }
+.main .container .task-container .task-capsule .completed-todo {
+  width: 435px;
+  height: 19px;
+  color: #2E2E2E;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  text-decoration: line-through;
+}
 .main .container .task-container .task-capsule .add-your-todo {
   width: 435px;
   height: 19px;
