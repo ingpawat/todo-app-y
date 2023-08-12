@@ -2,10 +2,10 @@ import React from 'react';
 import './edit-delete-dialog.scss';
 import { putTodo, deleteTodo } from '../../utils/fetchTodos'; // Make sure to import deleteTodo
 
-const EditDeleteDialog = ({ todoId, key, data }) => {
+const EditDeleteDialog = ({ todoId }) => {
     console.log('pass',todoId)
 
-  const handleEditClick = async (todoId: number, updatedTodo: string) => {
+  const handleEditClick = async (todoId: string, updatedTodo: string) => {
     console.log('edit',todoId)
     try {
       await putTodo(todoId, updatedTodo);

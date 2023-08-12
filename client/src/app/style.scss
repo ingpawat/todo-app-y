@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-
 .main {
     width: 100%;
     height: 100vh;
@@ -9,192 +8,203 @@
     align-items: center;
     background: #D1D0D9;
     font-family: 'Roboto', sans-serif;
+}
 
-    .container {
-        width: 80%;
-        max-width: 720px;
-        height: 620px;
-        border-radius: 20px;
-        background: #F5F5F5;
+.container {
+    width: 80%;
+    max-width: 720px;
+    height: auto;
+    border-radius: 20px;
+    background: #F5F5F5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.progress-box {
+    width: 100%;
+    max-width: 518px;
+    height: 123px;
+    border-radius: 20px;
+    background: #E07C7C;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5%;
+
+    .left-side {
         display: flex;
-        justify-content: center;
-        align-items: center;
         flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
 
-        .progress-box {
-            width: 100%;
-            max-width: 518px;
-            height: 123px;
-            border-radius: 20px;
-            background: #E07C7C;
+        .progress-bar-center {
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-
-            .left-side {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                padding: 15px;
-
-                .progress-bar-center {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    z-index: 99;
-                }
-            }
-
-            .progress-title {
-                color: #FFF;
-                font-family: Roboto;
-                font-size: 28px;
-                font-weight: 500;
-                line-height: normal;
-                margin: 0;
-
-            }
-
-            .completed-text {
-                color: #EBB9B8;
-                font-family: Roboto;
-                font-size: 16px;
-                font-weight: 400;
-                line-height: normal;
-                margin: 0;
-
-            }
+            justify-content: center;
+            align-items: center;
+            z-index: 99;
         }
+    }
 
-        .task-container {
-            .task-filter-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-direction: row;
-                .task-title {
-                    color: #000;
-                    font-family: Roboto;
-                    font-size: 24px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: normal;
-                    margin-top: 3%;
-                }
+    .progress-title {
+        color: #FFF;
+        font-family: Roboto;
+        font-size: 28px;
+        font-weight: 500;
+        line-height: normal;
+        margin: 0;
+    }
 
-                .filter-dropdown {
-                    width: 110px;
-                    height: 29px;
-                    border-radius: 10px;
-                    background: #FFF;
-                    margin-top: 3%;
-                    display: flex; 
-                    align-items: center; 
-                    justify-content: space-between;
-                    flex-direction: row;
-                    cursor: pointer;
-
-                    p {
-                        margin-left: 10%;
-                        color: #000;
-                        font-size: 13px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: normal;
-                    }
-                    .chevron-down {
-                        margin-right: 10%;
-                    }
-                }
-                
-            }
-
-
-            .task-capsule {
-                width: 518px;
-                height: 46px;
-                margin-top: 3%;
-                border-radius: 9999px;
-                background: #fff;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: row;
-                transition: opacity 0.5s ease-in-out;
-                /* Add a transition for opacity */
-
-                .tick-box {
-                    width: 22px;
-                    height: 22px;
-                    border-radius: 6px;
-                    border: 2px solid #585292;
-                    cursor: pointer;
-                }
-
-                .todo-title {
-                    width: 435px;
-                    height: 19px;
-                    color: #2E2E2E;
-                    font-family: Roboto;
-                    font-size: 16px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: normal;
-                    display: flex;
-                    align-items: center;
-                    padding-left: 10px;
-                }
-
-                .completed-todo{
-                    width: 435px;
-                    height: 19px;
-                    color: #2E2E2E;
-                    font-family: Roboto;
-                    font-size: 16px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: normal;
-                    display: flex;
-                    align-items: center;
-                    padding-left: 10px;
-                    text-decoration: line-through
-                }
-
-                .add-your-todo {
-                    width: 435px;
-                    height: 19px;
-                    color: #BCBCBC;
-                    font-family: Roboto;
-                    font-size: 16px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: normal;
-                    display: flex;
-                    align-items: center;
-                    padding-left: 10px;
-                }
-
-                .edit-delete-dialog-warpper {
-                    position: absolute;
-                    right: 18%;
-                    margin-top: 12%;
-                  }
-
-                  .background {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-color: rgba(0, 0, 0, 0.1); 
-                    cursor: pointer; 
-                  }
-                  
-            }
-        }
+    .completed-text {
+        color: #EBB9B8;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: normal;
+        margin: 0;
     }
 }
 
+.task-container {
+    .task-filter-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        margin-bottom: 3%;
+
+        .task-title {
+            color: #000;
+            font-family: Roboto;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            margin-top: 3%;
+        }
+
+        .filter-dropdown {
+            width: 110px;
+            height: 29px;
+            border-radius: 10px;
+            background: #FFF;
+            margin-top: 3%;
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            flex-direction: row;
+            cursor: pointer;
+
+            p {
+                margin-left: 10%;
+                color: #000;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+
+            .chevron-down {
+                margin-right: 10%;
+            }
+        }
+    }
+
+    .task-capsule {
+        width: 518px;
+        height: 46px;
+        border-radius: 9999px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        transition: opacity 0.5s ease-in-out;
+        margin-bottom: 1%;
+
+        .tick-box {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 2px solid #585292;
+            cursor: pointer;
+        }
+
+        .todo-title {
+            width: 435px;
+            height: 19px;
+            color: #2E2E2E;
+            font-family: Roboto;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+        }
+
+        .completed-todo{
+            width: 435px;
+            height: 19px;
+            color: #2E2E2E;
+            font-family: Roboto;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            text-decoration: line-through
+        }
+
+        .edit-delete-dialog-warpper {
+            position: sticky;
+            right: 18%;
+            margin-top: 18%;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1); 
+            cursor: pointer; 
+        }
+    }
+
+    .task-capsule-add-todo {
+        width: 518px;
+        height: 46px;
+        border-radius: 9999px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        transition: opacity 0.5s ease-in-out;
+        margin-bottom: 5%;
+
+        .add-your-todo {
+            width: 435px;
+            height: 19px;
+            color: #BCBCBC;
+            font-family: Roboto;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+        }
+
+    }
+}
 
 @media (max-width: 768px) {
     .container {
@@ -218,7 +228,7 @@
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
-    margin-top: 20%;
+    margin-top: 10%;
 }
 
 @keyframes rotation {

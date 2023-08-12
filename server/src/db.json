@@ -1,24 +1,56 @@
 {
   "todos": [
     {
-      "id": "5fe3f4ca-193c-4170-83c1-cb5a19908601",
-      "title": "Buy food for dinner",
+      "id": "f3e9c16a-6c4b-4f44-9e47-61d564ba73f1",
+      "title": "Go for a morning jog",
+      "completed": false
+    },
+    {
+      "id": "a82e9b7f-5e04-4a5a-8b18-92b4569e356a",
+      "title": "Prepare presentation for meeting",
       "completed": true
     },
     {
-      "id": "f619466c-a016-4281-b584-7db2795d103d",
-      "title": "Call Marie at 10.00 PM",
+      "id": "7d0cbb0b-8b6e-4bf5-81b6-36ee8b22a787",
+      "title": "Buy groceries for the week",
       "completed": false
     },
     {
-      "id": "5fe3f4ca-193c-4170-83c1-cb5a19908602",
-      "title": "Write a react blog post",
+      "id": "f2368c03-8d0f-4eae-869a-43066a5bfacf",
+      "title": "Read chapter 3 of 'The Great Gatsby'",
       "completed": false
     },
     {
-      "id": "5fe3f4ca-458x-4170-83c1-cb5a19908602",
-      "title": "Watching movie",
+      "id": "b623f2ef-0b5d-4d66-9a6f-8e697c557f17",
+      "title": "Attend webinar on AI technologies",
+      "completed": true
+    },
+    {
+      "id": "d15079c6-58d4-4b5d-a83c-03e4e67b1bf2",
+      "title": "Paint a picture of a sunset",
       "completed": false
+    },
+    {
+      "id": "7e2c5b09-8dd7-4f8e-87cc-4e6570aa698a",
+      "title": "Clean out the garage",
+      "completed": true
+    },
+    {
+      "id": "96b60f02-0f25-4ee3-9c0b-625b7d96ac01",
+      "title": "Practice playing the piano",
+      "completed": false
+    },
+    {
+      "id": "7ad3665c-bbb7-4b5e-8c87-9e7f6e47b5d6",
+      "title": "Plan a weekend getaway",
+      "completed": false
+    },
+    {
+      "id": "a4cf6b95-6a62-4d0f-8f1c-63213b7bfb44",
+      "title": "Organize a virtual team building event",
+      "completed": true
     }
   ]
+  
 }
+

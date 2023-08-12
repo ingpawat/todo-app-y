@@ -11,10 +11,11 @@
   background: #D1D0D9;
   font-family: "Roboto", sans-serif;
 }
-.main .container {
+
+.container {
   width: 80%;
   max-width: 720px;
-  height: 620px;
+  height: auto;
   border-radius: 20px;
   background: #F5F5F5;
   display: flex;
@@ -22,7 +23,8 @@
   align-items: center;
   flex-direction: column;
 }
-.main .container .progress-box {
+
+.progress-box {
   width: 100%;
   max-width: 518px;
   height: 123px;
@@ -31,20 +33,21 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 5%;
 }
-.main .container .progress-box .left-side {
+.progress-box .left-side {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;
 }
-.main .container .progress-box .left-side .progress-bar-center {
+.progress-box .left-side .progress-bar-center {
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 99;
 }
-.main .container .progress-box .progress-title {
+.progress-box .progress-title {
   color: #FFF;
   font-family: Roboto;
   font-size: 28px;
@@ -52,7 +55,7 @@
   line-height: normal;
   margin: 0;
 }
-.main .container .progress-box .completed-text {
+.progress-box .completed-text {
   color: #EBB9B8;
   font-family: Roboto;
   font-size: 16px;
@@ -60,13 +63,15 @@
   line-height: normal;
   margin: 0;
 }
-.main .container .task-container .task-filter-container {
+
+.task-container .task-filter-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  margin-bottom: 3%;
 }
-.main .container .task-container .task-filter-container .task-title {
+.task-container .task-filter-container .task-title {
   color: #000;
   font-family: Roboto;
   font-size: 24px;
@@ -75,7 +80,7 @@
   line-height: normal;
   margin-top: 3%;
 }
-.main .container .task-container .task-filter-container .filter-dropdown {
+.task-container .task-filter-container .filter-dropdown {
   width: 110px;
   height: 29px;
   border-radius: 10px;
@@ -87,7 +92,7 @@
   flex-direction: row;
   cursor: pointer;
 }
-.main .container .task-container .task-filter-container .filter-dropdown p {
+.task-container .task-filter-container .filter-dropdown p {
   margin-left: 10%;
   color: #000;
   font-size: 13px;
@@ -95,13 +100,12 @@
   font-weight: 400;
   line-height: normal;
 }
-.main .container .task-container .task-filter-container .filter-dropdown .chevron-down {
+.task-container .task-filter-container .filter-dropdown .chevron-down {
   margin-right: 10%;
 }
-.main .container .task-container .task-capsule {
+.task-container .task-capsule {
   width: 518px;
   height: 46px;
-  margin-top: 3%;
   border-radius: 9999px;
   background: #fff;
   display: flex;
@@ -109,16 +113,16 @@
   align-items: center;
   flex-direction: row;
   transition: opacity 0.5s ease-in-out;
-  /* Add a transition for opacity */
+  margin-bottom: 1%;
 }
-.main .container .task-container .task-capsule .tick-box {
+.task-container .task-capsule .tick-box {
   width: 22px;
   height: 22px;
   border-radius: 6px;
   border: 2px solid #585292;
   cursor: pointer;
 }
-.main .container .task-container .task-capsule .todo-title {
+.task-container .task-capsule .todo-title {
   width: 435px;
   height: 19px;
   color: #2E2E2E;
@@ -131,7 +135,7 @@
   align-items: center;
   padding-left: 10px;
 }
-.main .container .task-container .task-capsule .completed-todo {
+.task-container .task-capsule .completed-todo {
   width: 435px;
   height: 19px;
   color: #2E2E2E;
@@ -145,7 +149,34 @@
   padding-left: 10px;
   text-decoration: line-through;
 }
-.main .container .task-container .task-capsule .add-your-todo {
+.task-container .task-capsule .edit-delete-dialog-warpper {
+  position: -webkit-sticky;
+  position: sticky;
+  right: 18%;
+  margin-top: 18%;
+}
+.task-container .task-capsule .background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.task-container .task-capsule-add-todo {
+  width: 518px;
+  height: 46px;
+  border-radius: 9999px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  transition: opacity 0.5s ease-in-out;
+  margin-bottom: 5%;
+}
+.task-container .task-capsule-add-todo .add-your-todo {
   width: 435px;
   height: 19px;
   color: #BCBCBC;
@@ -157,20 +188,6 @@
   display: flex;
   align-items: center;
   padding-left: 10px;
-}
-.main .container .task-container .task-capsule .edit-delete-dialog-warpper {
-  position: absolute;
-  right: 18%;
-  margin-top: 12%;
-}
-.main .container .task-container .task-capsule .background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
-  cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -193,7 +210,7 @@
   display: inline-block;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
-  margin-top: 20%;
+  margin-top: 10%;
 }
 
 @keyframes rotation {

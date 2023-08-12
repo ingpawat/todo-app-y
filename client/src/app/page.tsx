@@ -11,10 +11,12 @@ import EditDeleteDialog from '@/app/components/edit-delete-dialog/edit-delete-di
 
 export default function Home() {
     const [todos, setTodos] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [isDialogOpen, setDialogOpen] = useState(false);
-    const [todoIdforEditDelete, settodoIdforEditDelete] = useState(null);
-    const [howManyCompleted, setHowManyCompleted] = useState(0);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
+    const [todoIdforEditDelete, setTodoIdforEditDelete] = useState<string | null>(null);
+    const [howManyCompleted, setHowManyCompleted] = useState<number>(0);
+    const [newTodoTitle, setNewTodoTitle] = useState<string | null>('');
+
 
     const fetchData = async () => {
         try {
@@ -26,12 +28,11 @@ export default function Home() {
         }
     };
 
-    const handleTickClick = async (todoId: number, updatedFields: string) => {
+    const handleTickClick = async (todoId: string, updatedFields: any) => {
         try {
             const todo = todos.find(todo => todo.id === todoId);
             const updatedFields = { completed: !todo.completed };
             await patchTodo(todoId, updatedFields);
-            console.log(`Todo marked as ${updatedFields.completed ? 'completed' : 'incomplete'}`);
             fetchData();
         } catch (error) {
             console.error('Error updating todo:', error);
@@ -59,17 +60,17 @@ export default function Home() {
                             <p className='progress-title'>Progress</p>
                             <div className='progress-bar-center'>
                                 <ProgressBar
-                                     completed={(howManyCompleted / todos.length) * 100}
-                                     bgColor="#fff"
-                                     height="7.343px"
-                                     width="480px"
-                                     borderRadius="999px"
-                                     labelAlignment="outside"
-                                     isLabelVisible={false}
-                                     baseBgColor="#3B3B3B"
-                                     labelColor="#e80909"
-                                     animateOnRender
-                                     maxCompleted={100}
+                                    completed={(howManyCompleted / todos.length) * 100}
+                                    bgColor="#fff"
+                                    height="7.343px"
+                                    width="480px"
+                                    borderRadius="999px"
+                                    labelAlignment="outside"
+                                    isLabelVisible={false}
+                                    baseBgColor="#3B3B3B"
+                                    labelColor="#e80909"
+                                    animateOnRender
+                                    maxCompleted={100}
                                 />
                             </div>
                             <p className='completed-text'>{howManyCompleted} completed</p>
@@ -102,19 +103,21 @@ export default function Home() {
                                     {/* Todo - Title */}
                                     <p
                                         className={todo.completed ? 'completed-todo' : 'todo-title'}
-                                        onClick={() => handleToDoId(todo.id)}
                                     >
                                         {todo.title}
                                     </p>
 
                                     {/* 3 Dots click to open the edit delete dialog */}
-                                    <a onClick={() => {
-                                        setDialogOpen(true);
-                                        settodoIdforEditDelete(todo.id);
-                                    }}>
+
+                                    <a
+                                        style={{ zIndex: 80 }}
+                                        onClick={() => {
+                                            setDialogOpen(true);
+                                            setTodoIdforEditDelete(todo.id);
+                                        }}>
+
                                         <Image src={Dot} alt='Dot' width={17} height={17} style={{ cursor: 'pointer' }} />
                                     </a>
-
                                     {isDialogOpen && todoIdforEditDelete === todo.id && (
                                         <>
                                             <div className='edit-delete-dialog-warpper' style={{ zIndex: 90 }} >
@@ -123,10 +126,17 @@ export default function Home() {
                                             <div className='background' onClick={() => setDialogOpen(false)} style={{ zIndex: 50 }} />
                                         </>
                                     )}
+
                                 </div>
                             ))}
-                            <div className='task-capsule'>
-                                <p className='add-your-todo'>Add your todo...</p>
+                            <div className='task-capsule-add-todo'>
+                                <input
+                                    type='text'
+                                    value={newTodoTitle}
+                                    onChange={e => setNewTodoTitle(e.target.value)}
+                                    placeholder='Add your todo...'
+                                />
+                                <button onClick={addTodo}>Add</button>
                             </div>
                         </div>
                     )}
