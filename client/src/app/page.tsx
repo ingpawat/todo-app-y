@@ -136,7 +136,6 @@ export default function Home() {
                                     onChange={e => setNewTodoTitle(e.target.value)}
                                     placeholder='Add your todo...'
                                 />
-                                <button onClick={addTodo}>Add</button>
                             </div>
                         </div>
                     )}
