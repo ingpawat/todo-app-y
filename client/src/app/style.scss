@@ -158,6 +158,23 @@
                     align-items: center;
                     padding-left: 10px;
                 }
+
+                .edit-delete-dialog-warpper {
+                    position: absolute;
+                    right: 18%;
+                    margin-top: 12%;
+                  }
+
+                  .background {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.1); 
+                    cursor: pointer; 
+                  }
+                  
             }
         }
     }
