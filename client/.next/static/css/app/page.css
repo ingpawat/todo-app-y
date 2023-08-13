@@ -4,7 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 .main {
   width: 100%;
-  height: auto;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,6 +21,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 20px;
+  /* Added padding for spacing */
 }
 
 .progress-box {
@@ -63,6 +65,9 @@
   margin: 0;
 }
 
+.task-container {
+  width: 100%;
+}
 .task-container .task-filter-container {
   display: flex;
   justify-content: space-between;
@@ -103,16 +108,18 @@
   margin-right: 10%;
 }
 .task-container .task-capsule {
-  width: 518px;
-  height: 46px;
+  width: 100%;
+  min-height: 46px;
   border-radius: 9999px;
   background: #fff;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
   transition: opacity 0.5s ease-in-out;
   margin-bottom: 1%;
+  padding: 10px;
+  /* Added padding for spacing */
 }
 .task-container .task-capsule .tick-box {
   width: 22px;
@@ -121,38 +128,28 @@
   border: 2px solid #585292;
   cursor: pointer;
 }
-.task-container .task-capsule .todo-title {
-  width: 435px;
-  height: 19px;
-  color: #2E2E2E;
-  font-family: Roboto;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-}
+.task-container .task-capsule .todo-title,
 .task-container .task-capsule .completed-todo {
-  width: 435px;
-  height: 19px;
+  flex: 1 1;
+  margin: 0 5px;
   color: #2E2E2E;
   font-family: Roboto;
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   display: flex;
   align-items: center;
-  padding-left: 10px;
-  text-decoration: line-through;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .task-container .task-capsule .edit-delete-dialog-warpper {
-  position: -webkit-sticky;
-  position: sticky;
-  right: 18%;
-  margin-top: 18%;
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  z-index: 90;
 }
 .task-container .task-capsule .background {
   position: fixed;
@@ -162,9 +159,10 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  z-index: 50;
 }
 .task-container .task-capsule-add-todo {
-  width: 518px;
+  width: 100%;
   height: 46px;
   border-radius: 9999px;
   background: #fff;
@@ -175,12 +173,13 @@
   transition: opacity 0.5s ease-in-out;
   margin-bottom: 5%;
 }
-.task-container .task-capsule-add-todo input[type=text], .task-container .task-capsule-add-todo .add-todo-type-field {
-  width: 435px;
+.task-container .task-capsule-add-todo input[type=text],
+.task-container .task-capsule-add-todo .add-todo-type-field {
+  width: 100%;
   height: 19px;
   color: #BCBCBC;
   font-family: Roboto;
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -190,42 +189,44 @@
   border: none;
   outline: none;
 }
-
 @media (max-width: 768px) {
-  .container {
+  .task-container .container {
     width: 90%;
   }
-  .task-container .task-capsule {
+  .task-container .task-container .task-capsule {
     width: 100%;
     margin-top: 5%;
     flex-direction: column;
     align-items: flex-start;
   }
 }
-.loader {
-  width: 48px;
-  height: 48px;
-  border: 5px solid #585292;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-  margin-top: 10%;
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
+@media (max-width: 480px) {
+  .task-container .container {
+    width: 95%;
   }
-  100% {
-    transform: rotate(360deg);
+  .task-container .task-container .task-capsule {
+    margin-top: 3%;
   }
 }
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[13].use[5]!./src/app/components/edit-delete-dialog/edit-delete-dialog.scss ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.edit-input {
+  width: 518px;
+  height: 46px;
+  border-radius: 9999px;
+  background: #FFF;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 5px;
+  border: none;
+}
+
 .dialog-container {
   width: 111px;
   height: 81px;
@@ -239,9 +240,8 @@
   padding: 10px;
   z-index: 99 !important;
 }
-
-.edit,
-.delete {
+.dialog-container .edit,
+.dialog-container .delete {
   color: #2E2E2E;
   font-family: Roboto;
   font-size: 14px;
@@ -255,11 +255,10 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-.edit:hover,
-.delete:hover {
+.dialog-container .edit:hover,
+.dialog-container .delete:hover {
   background-color: #e0e0e0;
 }
-
-.delete {
+.dialog-container .delete {
   color: #E07C7C;
 }

@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './style.scss';
 import ProgressBar from "@ramonak/react-progress-bar";
 import { getAllTodo, patchTodo, postTodo } from './utils/fetchTodos';
@@ -16,6 +16,9 @@ export default function Home() {
     const [todoIdforEditDelete, setTodoIdforEditDelete] = useState<string | null>(null);
     const [howManyCompleted, setHowManyCompleted] = useState<number>(0);
     const [newTodoTitle, setNewTodoTitle] = useState<string>('');
+    const [progressBoxWidth, setProgressBoxWidth] = useState(85);
+    const progressBoxRef = useRef(null);
+
 
     const fetchData = async () => {
         try {
@@ -67,13 +70,19 @@ export default function Home() {
     useEffect(() => {
         fetchData();
         refreshData();
+        if (progressBoxRef.current) {
+            const width = progressBoxRef.current.offsetWidth;
+            setProgressBoxWidth((width-30)); // Convert to percentage
+          }
     }, []);
+
+    console.log(progressBoxWidth)
 
     return (
         <>
             <main className='main'>
                 <div className='container' >
-                    <div className='progress-box'>
+                    <div className='progress-box'  ref={progressBoxRef}>
                         <div className="left-side">
                             <p className='progress-title'>Progress</p>
                             <div className='progress-bar-center'>
@@ -81,7 +90,7 @@ export default function Home() {
                                     completed={(howManyCompleted / todos.length) * 100}
                                     bgColor="#fff"
                                     height="7.343px"
-                                    width="480px"
+                                    width={progressBoxWidth}
                                     borderRadius="999px"
                                     labelAlignment="outside"
                                     isLabelVisible={false}

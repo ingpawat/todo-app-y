@@ -31,24 +31,25 @@ const EditDeleteDialog = ({ todoId, title, refreshData }) => {
   };
 
   return (
-    <div className='dialog-container'>
+    <div className={`dialog-container ${isEditing ? '' : 'edit-input-container'}`}>
       {isEditing ? (
-        <div>
+        <div className="edit-field">
           <input
-            type='text'
+            type="text"
+            className="edit-input"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
           />
-          <button className='action-button save' onClick={handleSaveClick}>
+          <button className="action-button save" onClick={handleSaveClick}>
             Save
           </button>
         </div>
       ) : (
         <>
-          <a className='action-button edit' onClick={handleEditClick}>
+          <a className="action-button edit" onClick={handleEditClick}>
             Edit
           </a>
-          <a className='action-button delete' onClick={handleDeleteClick}>
+          <a className="action-button delete" onClick={handleDeleteClick}>
             Delete
           </a>
         </>

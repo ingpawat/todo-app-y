@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+
+.edit-input {
+  width: 518px;
+  height: 46px;
+  border-radius: 9999px;
+background: #FFF;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 5px;
+  border:none;
+}
+
 .dialog-container {
   width: 111px;
   height: 81px;
@@ -12,29 +28,28 @@
   align-items: left;
   padding: 10px;
   z-index: 99 !important;
-}
 
-.edit,
-.delete {
-  color: #2E2E2E;
-  font-family: Roboto;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-transform: capitalize;
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  .edit,
+  .delete {
+    color: #2E2E2E;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 
-  &:hover {
-    background-color: #e0e0e0;
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+
+  .delete {
+    color: #E07C7C;
   }
 }
-
-.delete{
-   color: #E07C7C;
-}
-
