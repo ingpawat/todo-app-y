@@ -1,24 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './edit-delete-dialog.scss';
-import { putTodo, deleteTodo } from '../../utils/fetchTodos'; // Make sure to import deleteTodo
+import { patchTodo, deleteTodo } from '../../utils/fetchTodos';
 
-const EditDeleteDialog = ({ todoId }) => {
-    console.log('pass',todoId)
+const EditDeleteDialog = ({ todoId, title, refreshData }) => {
+  const [newTitle, setNewTitle] = useState(title);
+  const [isEditing, setIsEditing] = useState(false);
 
-  const handleEditClick = async (todoId: string, updatedTodo: string) => {
-    console.log('edit',todoId)
+  const handleEditClick = async () => {
+    setIsEditing(true);
+  };
+
+  const handleSaveClick = async () => {
     try {
-      await putTodo(todoId, updatedTodo);
+      await patchTodo(todoId, { title: newTitle });
+      setIsEditing(false);
       console.log('Edit successful');
     } catch (error) {
       console.error('Error editing todo:', error);
     }
   };
 
-  const handleDeleteClick = async (todoId) => {
-    console.log('delete',todoId)
+  const handleDeleteClick = async () => {
     try {
-      await deleteTodo(todoId); // Make sure deleteTodo is defined and implemented
+      await deleteTodo(todoId);
+      refreshData();
       console.log('Delete successful');
     } catch (error) {
       console.error('Error deleting todo:', error);
@@ -27,12 +32,27 @@ const EditDeleteDialog = ({ todoId }) => {
 
   return (
     <div className='dialog-container'>
-      <a className='edit' onClick={handleEditClick}>
-        Edit
-      </a>
-      <a className='delete' onClick={handleDeleteClick}>
-        Delete
-      </a>
+      {isEditing ? (
+        <div>
+          <input
+            type='text'
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+          />
+          <button className='action-button save' onClick={handleSaveClick}>
+            Save
+          </button>
+        </div>
+      ) : (
+        <>
+          <a className='action-button edit' onClick={handleEditClick}>
+            Edit
+          </a>
+          <a className='action-button delete' onClick={handleDeleteClick}>
+            Delete
+          </a>
+        </>
+      )}
     </div>
   );
 };

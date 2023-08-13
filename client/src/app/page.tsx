@@ -17,7 +17,6 @@ export default function Home() {
     const [howManyCompleted, setHowManyCompleted] = useState<number>(0);
     const [newTodoTitle, setNewTodoTitle] = useState<string>('');
 
-
     const fetchData = async () => {
         try {
             const todosData = await getAllTodo();
@@ -43,18 +42,15 @@ export default function Home() {
         return todos.filter(todo => todo.completed).length;
     };
 
-    useEffect(() => {
-        setHowManyCompleted(completeCount());
-    }, [todos]);
-
-    useEffect(() => {
-        fetchData();
-    }, []);
+    const refreshData = async () => {
+        const updatedTodos = await getAllTodo();
+        setTodos(updatedTodos);
+    };
 
     const handleAddTodo = async () => {
         try {
             if (newTodoTitle.trim() === '') return;
-    
+
             const newTodo = { title: newTodoTitle, completed: false };
             await postTodo(newTodo);
             setNewTodoTitle('');
@@ -64,12 +60,19 @@ export default function Home() {
         }
     };
 
-    console.log(newTodoTitle)
+    useEffect(() => {
+        setHowManyCompleted(completeCount());
+    }, [todos]);
+
+    useEffect(() => {
+        fetchData();
+        refreshData();
+    }, []);
 
     return (
         <>
             <main className='main'>
-            <div className='container' >
+                <div className='container' >
                     <div className='progress-box'>
                         <div className="left-side">
                             <p className='progress-title'>Progress</p>
@@ -123,7 +126,6 @@ export default function Home() {
                                     </p>
 
                                     {/* 3 Dots click to open the edit delete dialog */}
-
                                     <a
                                         style={{ zIndex: 80 }}
                                         onClick={() => {
@@ -133,10 +135,14 @@ export default function Home() {
 
                                         <Image src={Dot} alt='Dot' width={17} height={17} style={{ cursor: 'pointer' }} />
                                     </a>
+
                                     {isDialogOpen && todoIdforEditDelete === todo.id && (
                                         <>
                                             <div className='edit-delete-dialog-warpper' style={{ zIndex: 90 }} >
-                                                <EditDeleteDialog todoId={todoIdforEditDelete} key={todo.id} />
+                                                <EditDeleteDialog
+                                                    todoId={todoIdforEditDelete}
+                                                    key={todo.id}
+                                                    refreshData={refreshData} />
                                             </div>
                                             <div className='background' onClick={() => setDialogOpen(false)} style={{ zIndex: 50 }} />
                                         </>
@@ -144,6 +150,7 @@ export default function Home() {
 
                                 </div>
                             ))}
+
                             <div className='task-capsule-add-todo'>
                                 <input
                                     className='add-todo-type-field'

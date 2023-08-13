@@ -1,47 +1,40 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 const BASE_URL = 'http://localhost:3001';
 
-export async function getAllTodo() {
+interface Todo {
+  id: string;
+  title: string;
+  completed: boolean;
+}
+
+const createError = (operation: string) => new Error(`Error while ${operation} todo`);
+
+async function axiosRequest<T>(url: string, method: string, data?: any): Promise<T> {
   try {
-    const response = await axios.get(`${BASE_URL}/todos`);
+    const response: AxiosResponse<T> = await axios[method](url, data);
     return response.data;
   } catch (error) {
-    throw new Error('Error while fetching all todos');
+    throw createError(method.toLowerCase());
   }
 }
 
-export async function getTodoId(todoId: string) {
-  try {
-    const response = await axios.get(`${BASE_URL}/todos/${todoId}`);
-    return response.data;
-  } catch (error) {
-    throw new Error('Error while fetching a todo by ID');
-  }
+export async function getAllTodo(): Promise<Todo[]> {
+  return axiosRequest<Todo[]>(`${BASE_URL}/todos`, 'get');
 }
 
-export async function postTodo(newTodo: string) {
-  try {
-      const response = await axios.post(`${BASE_URL}/todos`, newTodo);
-      return response.data;
-  } catch (error) {
-      throw new Error('Error while adding a new todo');
-  }
+export async function getTodoId(todoId: string): Promise<Todo> {
+  return axiosRequest<Todo>(`${BASE_URL}/todos/${todoId}`, 'get');
 }
 
-export async function patchTodo(todoId: string, updatedFields: any) {
-  try {
-    const response = await axios.patch(`${BASE_URL}/todos/${todoId}`, updatedFields);
-    return response.data;
-  } catch (error) {
-    throw new Error('Error while partially updating a todo');
-  }
+export async function postTodo(newTodo: Todo): Promise<Todo> {
+  return axiosRequest<Todo>(`${BASE_URL}/todos`, 'post', newTodo);
 }
 
-// export async function deleteTodo(todoId: number) {
-//   try {
-//     await axios.delete(`${BASE_URL}/todos/${todoId}`);
-//   } catch (error) {
-//     throw new Error('Error while deleting a todo');
-//   }
-// }
+export async function patchTodo(todoId: string, updatedFields: Partial<Todo>): Promise<Todo> {
+  return axiosRequest<Todo>(`${BASE_URL}/todos/${todoId}`, 'patch', updatedFields);
+}
+
+export async function deleteTodo(todoId: string): Promise<void> {
+  await axiosRequest<void>(`${BASE_URL}/todos/${todoId}`, 'delete');
+}
