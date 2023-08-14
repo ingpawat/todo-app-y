@@ -2,6 +2,7 @@
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[13].use[5]!./src/app/style.scss ***!
   \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+/* Main Styles */
 .main {
   width: 100%;
   min-height: 100vh;
@@ -12,6 +13,7 @@
   font-family: "Roboto", sans-serif;
 }
 
+/* Container Styles */
 .container {
   width: 80%;
   max-width: 720px;
@@ -22,9 +24,9 @@
   align-items: center;
   flex-direction: column;
   padding: 20px;
-  /* Added padding for spacing */
 }
 
+/* Progress Box Styles */
 .progress-box {
   width: 100%;
   max-width: 518px;
@@ -36,6 +38,8 @@
   justify-content: space-between;
   margin-top: 5%;
 }
+
+/* Left Side of Progress Box */
 .progress-box .left-side {
   display: flex;
   flex-direction: column;
@@ -48,7 +52,9 @@
   align-items: center;
   z-index: 99;
 }
-.progress-box .progress-title {
+
+.progress-title,
+.completed-text {
   color: #FFF;
   font-family: Roboto;
   font-size: 28px;
@@ -56,17 +62,19 @@
   line-height: normal;
   margin: 0;
 }
-.progress-box .completed-text {
+
+.completed-text {
   color: #EBB9B8;
-  font-family: Roboto;
   font-size: 16px;
-  font-weight: 400;
-  line-height: normal;
-  margin: 0;
 }
 
+/* Task Container Styles */
 .task-container {
   width: 100%;
+  /* Task Filter Container */
+  /* Task Capsule Styles */
+  /* Task Capsule Add Todo Styles */
+  /* Media Queries */
 }
 .task-container .task-filter-container {
   display: flex;
@@ -79,7 +87,6 @@
   color: #000;
   font-family: Roboto;
   font-size: 24px;
-  font-style: normal;
   font-weight: 500;
   line-height: normal;
   margin-top: 3%;
@@ -100,7 +107,6 @@
   margin-left: 10%;
   color: #000;
   font-size: 13px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
@@ -119,13 +125,19 @@
   transition: opacity 0.5s ease-in-out;
   margin-bottom: 1%;
   padding: 10px;
+  /* Edit Delete Dialog Wrapper */
+  /* Background Overlay */
 }
-.task-container .task-capsule .tick-box {
+.task-container .task-capsule .tick-box, .task-container .task-capsule .completed-tick-box {
   width: 22px;
   height: 22px;
   border-radius: 6px;
   border: 2px solid #585292;
   cursor: pointer;
+  background: #FFF;
+}
+.task-container .task-capsule .completed-tick-box {
+  background: #585292;
 }
 .task-container .task-capsule .todo-title,
 .task-container .task-capsule .completed-todo {
@@ -134,7 +146,6 @@
   color: #2E2E2E;
   font-family: Roboto;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
   display: flex;
@@ -145,17 +156,17 @@
 }
 .task-container .task-capsule .completed-todo {
   text-decoration: line-through;
+  background: #FFF;
 }
 .task-container .task-capsule .edit-delete-dialog-warpper {
   display: flex;
-  justify-content: end; /* Center content horizontally */
-  align-items: end; /* Center content vertically */
+  justify-content: flex-end;
+  align-items: flex-end;
   position: absolute;
   transform: translateY(-50%);
   z-index: 90;
   width: 518px;
   height: 46px;
-  border: red solid 4px;
   margin-left: 15%;
 }
 .task-container .task-capsule .background {
@@ -187,7 +198,6 @@
   color: #BCBCBC;
   font-family: Roboto;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
   display: flex;
@@ -229,20 +239,21 @@
 .edit-input {
   width: 100%;
   height: 100%;
-  border-radius: 9999px;
   background: #FFF;
   padding: 10px;
   font-family: "Roboto", sans-serif;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
   border: none;
 }
 
 .dialog-container-edit {
-  width: 1101px;
-  border: 4px solid green;
+  width: 100%;
+  border-radius: 10px;
+  background: #FFF;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 99;
 }
 
 .dialog-container {

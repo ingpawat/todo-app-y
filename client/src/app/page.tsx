@@ -118,11 +118,11 @@ export default function Home() {
                             </div>
                             {todos.map(todo => (
                                 <div className='task-capsule' key={todo.id}>
-                                    <div
-                                        className='tick-box'
+                                    <button
+                                        className={todo.completed ? 'completed-tick-box' : 'tick-box'}
                                         onClick={() => handleTickClick(todo.id)}>
                                         <Image src={TickBox} alt='TickBox' width={17} height={17} />
-                                    </div>
+                                    </button>
                                     <p
                                         className={todo.completed ? 'completed-todo' : 'todo-title'}
                                     >
