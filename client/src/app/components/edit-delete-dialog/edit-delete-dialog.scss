@@ -17,14 +17,17 @@
     font-weight: 400;
     border: none;
 }
-.dialog-container-edit{
-    width: 100%;
+
+.dialog-container-edit {
+    width:200%;
     border-radius: 10px;
     background: #FFF;
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.10);
     padding: 10px;
     z-index: 99;
+    margin-right:200%;
 }
+
 .dialog-container {
     width: 111px;
     height: 81px;
@@ -37,6 +40,7 @@
     align-items: left;
     padding: 10px;
     z-index: 99 !important;
+    position: absolute;
 }
 
 .action-buttons {
@@ -69,4 +73,20 @@
 .edit:hover,
 .delete:hover {
     background-color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+    .dialog-container {
+        width: 85px;
+        height: 81px;
+        border-radius: 10px;
+        background: #FFF;
+        box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.10);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: left;
+        padding: 10px;
+        z-index: 99 !important;
+    }
 }

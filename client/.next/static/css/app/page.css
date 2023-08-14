@@ -10,6 +10,7 @@
   justify-content: center;
   align-items: center;
   background: #D1D0D9;
+  overflow: hidden;
   font-family: "Roboto", sans-serif;
 }
 
@@ -101,18 +102,13 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  cursor: pointer;
   border: none;
 }
-.task-container .task-filter-container .filter-dropdown p {
-  margin-left: 10%;
+.task-container .task-filter-container .filter-dropdown option {
   color: #000;
   font-size: 13px;
   font-weight: 400;
   line-height: normal;
-}
-.task-container .task-filter-container .filter-dropdown .chevron-down {
-  margin-right: 10%;
 }
 .task-container .task-capsule {
   width: 100%;
@@ -129,7 +125,8 @@
   /* Edit Delete Dialog Wrapper */
   /* Background Overlay */
 }
-.task-container .task-capsule .tick-box, .task-container .task-capsule .completed-tick-box {
+.task-container .task-capsule .tick-box,
+.task-container .task-capsule .completed-tick-box {
   width: 22px;
   height: 22px;
   border-radius: 6px;
@@ -158,17 +155,6 @@
 .task-container .task-capsule .completed-todo {
   text-decoration: line-through;
   background: #FFF;
-}
-.task-container .task-capsule .edit-delete-dialog-warpper {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  position: absolute;
-  transform: translateY(-50%);
-  z-index: 90;
-  width: 518px;
-  height: 46px;
-  margin-left: 15%;
 }
 .task-container .task-capsule .background {
   position: fixed;
@@ -207,15 +193,9 @@
   border: none;
   outline: none;
 }
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .task-container .container {
     width: 90%;
-  }
-  .task-container .task-container .task-capsule {
-    width: 100%;
-    margin-top: 5%;
-    flex-direction: column;
-    align-items: flex-start;
   }
 }
 @media (max-width: 480px) {
@@ -249,12 +229,13 @@
 }
 
 .dialog-container-edit {
-  width: 100%;
+  width: 200%;
   border-radius: 10px;
   background: #FFF;
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
   padding: 10px;
   z-index: 99;
+  margin-right: 200%;
 }
 
 .dialog-container {
@@ -269,6 +250,7 @@
   align-items: left;
   padding: 10px;
   z-index: 99 !important;
+  position: absolute;
 }
 
 .action-buttons {
@@ -301,4 +283,20 @@
 .edit:hover,
 .delete:hover {
   background-color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+  .dialog-container {
+    width: 85px;
+    height: 81px;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    padding: 10px;
+    z-index: 99 !important;
+  }
 }

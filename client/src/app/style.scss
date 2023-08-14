@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     background: #D1D0D9;
+    overflow: hidden;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -98,19 +99,15 @@
             align-items: center;
             justify-content: space-between;
             flex-direction: row;
-            cursor: pointer;
-            border:none;
-            p {
-                margin-left: 10%;
+            border: none;
+
+            option {
                 color: #000;
                 font-size: 13px;
                 font-weight: 400;
                 line-height: normal;
             }
 
-            .chevron-down {
-                margin-right: 10%;
-            }
         }
     }
 
@@ -128,7 +125,8 @@
         margin-bottom: 1%;
         padding: 10px;
 
-        .tick-box,.completed-tick-box {
+        .tick-box,
+        .completed-tick-box {
             width: 22px;
             height: 22px;
             border-radius: 6px;
@@ -137,12 +135,14 @@
             background: #FFF;
         }
 
-        .completed-tick-box{
-            background: #585292;;
+        .completed-tick-box {
+            background: #585292;
+            ;
         }
 
         .todo-title,
-        .completed-todo,{
+        .completed-todo,
+            {
             flex: 1;
             margin: 0 5px;
             color: #2E2E2E;
@@ -163,17 +163,16 @@
         }
 
         /* Edit Delete Dialog Wrapper */
-        .edit-delete-dialog-warpper {
-            display: flex;
-            justify-content: flex-end;
-            align-items: flex-end;
-            position: absolute;
-            transform: translateY(-50%);
-            z-index: 90;
-            width: 518px;
-            height: 46px;
-            margin-left: 15%;
-        }
+        // .edit-delete-dialog-warpper {
+        //     display: flex;
+        //     justify-content: flex-end;
+        //     align-items: flex-end;
+        //     position: absolute;
+        //     transform: translateY(-50%);
+        //     z-index: 90;
+        //     width: 65vw;
+        //     height: 46px;
+        // }
 
         /* Background Overlay */
         .background {
@@ -218,27 +217,36 @@
         }
     }
 
-    /* Media Queries */
-    @media (max-width: 768px) {
-        .container {
-            width: 90%;
-        }
-
-        .task-container .task-capsule {
-            width: 100%;
-            margin-top: 5%;
-            flex-direction: column;
-            align-items: flex-start;
-        }
+ /* Media Queries */
+ @media (min-width: 768px) {
+    .container {
+        width: 90%;
     }
 
-    @media (max-width: 480px) {
-        .container {
-            width: 95%;
-        }
-
-        .task-container .task-capsule {
-            margin-top: 3%;
-        }
+    .edit-delete-dialog-warpper {
+        // display: flex;
+        // justify-content: flex-end;
+        // align-items: flex-end;
+        // position: absolute;
+        // transform: translateY(-50%);
+        // z-index: 90;
+        // width: 1%;
+        // height: 46px;
     }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+    }
+
+    // .edit-delete-dialog-warpper {
+    //     width: 135px;
+    //     height: 46px;
+    // }
+
+    .task-container .task-capsule {
+        margin-top: 3%;
+    }
+}
 }
