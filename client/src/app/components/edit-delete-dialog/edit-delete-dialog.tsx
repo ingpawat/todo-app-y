@@ -2,9 +2,15 @@ import React, { useState } from 'react';
 import './edit-delete-dialog.scss';
 import { patchTodo, deleteTodo } from '../../utils/fetchTodos';
 
-const EditDeleteDialog = ({ todoId, title, refreshData }) => {
-  const [newTitle, setNewTitle] = useState(title);
-  const [isEditing, setIsEditing] = useState(false);
+interface EditDeleteDialogProps {
+  todoId: string;
+  title: string;
+  refreshData: () => void;
+}
+
+const EditDeleteDialog: React.FC<EditDeleteDialogProps> = ({ todoId, title, refreshData }) => {
+  const [newTitle, setNewTitle] = useState<string>(title);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -29,7 +35,7 @@ const EditDeleteDialog = ({ todoId, title, refreshData }) => {
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       handleSaveClick();
@@ -37,13 +43,13 @@ const EditDeleteDialog = ({ todoId, title, refreshData }) => {
   };
 
   return (
-<div className={isEditing ? 'dialog-container-edit' : 'dialog-container'}>
+    <div className={isEditing ? 'dialog-container-edit' : 'dialog-container'}>
       {isEditing ? (
         <div className="edit-field">
           <input
             type="text"
             className="edit-input"
-            style={{ zIndex: 90, position: 'relative',marginRight: '100%' }}
+            style={{ zIndex: 90, position: 'relative', marginRight: '100%' }}
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
             onKeyDown={handleKeyDown}

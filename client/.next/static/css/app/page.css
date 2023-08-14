@@ -1,3 +1,97 @@
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[13].use[5]!./src/app/components/edit-delete-dialog/edit-delete-dialog.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.edit-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.edit-input {
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  border: none;
+}
+
+.dialog-container-edit {
+  width: 200%;
+  border-radius: 10px;
+  background: #FFF;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 99;
+  margin-right: 200%;
+}
+
+.dialog-container {
+  width: 111px;
+  height: 81px;
+  border-radius: 10px;
+  background: #FFF;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  padding: 10px;
+  z-index: 99 !important;
+  position: absolute;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.edit,
+.delete {
+  color: #2E2E2E;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete {
+  color: #E07C7C;
+}
+
+.edit:hover,
+.delete:hover {
+  background-color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+  .dialog-container {
+    width: 85px;
+    height: 81px;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    padding: 10px;
+    z-index: 99 !important;
+  }
+}
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[13].use[5]!./src/app/style.scss ***!
   \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
@@ -204,99 +298,5 @@
   }
   .task-container .task-container .task-capsule {
     margin-top: 3%;
-  }
-}
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[13].use[5]!./src/app/components/edit-delete-dialog/edit-delete-dialog.scss ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-.edit-input-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.edit-input {
-  width: 100%;
-  height: 100%;
-  background: #FFF;
-  padding: 10px;
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  border: none;
-}
-
-.dialog-container-edit {
-  width: 200%;
-  border-radius: 10px;
-  background: #FFF;
-  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  z-index: 99;
-  margin-right: 200%;
-}
-
-.dialog-container {
-  width: 111px;
-  height: 81px;
-  border-radius: 10px;
-  background: #FFF;
-  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: left;
-  padding: 10px;
-  z-index: 99 !important;
-  position: absolute;
-}
-
-.action-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 100%;
-}
-
-.edit,
-.delete {
-  color: #2E2E2E;
-  font-family: Roboto;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-transform: capitalize;
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.delete {
-  color: #E07C7C;
-}
-
-.edit:hover,
-.delete:hover {
-  background-color: #e0e0e0;
-}
-
-@media (max-width: 768px) {
-  .dialog-container {
-    width: 85px;
-    height: 81px;
-    border-radius: 10px;
-    background: #FFF;
-    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: left;
-    padding: 10px;
-    z-index: 99 !important;
   }
 }

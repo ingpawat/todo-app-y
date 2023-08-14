@@ -1,23 +1,29 @@
 "use client"
 import React, { useState, useEffect, useRef } from 'react';
-import './style.scss';
 import ProgressBar from "@ramonak/react-progress-bar";
-import { getAllTodo, patchTodo, postTodo } from './utils/fetchTodos';
 import Image from 'next/image';
 import TickBox from '../app/assets/tickBox.svg';
 import Dot from '../app/assets/3dot.svg';
 import EditDeleteDialog from '@/app/components/edit-delete-dialog/edit-delete-dialog';
+import './style.scss';
+import { getAllTodo, patchTodo, postTodo } from './utils/fetchTodos';
+
+interface Todo {
+    id: string;
+    title: string;
+    completed: boolean;
+}
 
 export default function Home() {
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useState<Todo[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [isDialogOpen, setDialogOpen] = useState<boolean>(false);
     const [todoIdforEditDelete, setTodoIdforEditDelete] = useState<string | null>(null);
     const [howManyCompleted, setHowManyCompleted] = useState<number>(0);
     const [newTodoTitle, setNewTodoTitle] = useState<string>('');
-    const [progressBoxWidth, setProgressBoxWidth] = useState(85);
-    const progressBoxRef = useRef(null);
-    const [selectedFilter, setSelectedFilter] = useState("all");
+    const [progressBoxWidth, setProgressBoxWidth] = useState<number>(85);
+    const progressBoxRef = useRef<HTMLDivElement | null>(null);
+    const [selectedFilter, setSelectedFilter] = useState<string>("all");
 
     const fetchData = async () => {
         try {
@@ -32,17 +38,17 @@ export default function Home() {
     const handleTickClick = async (todoId: string) => {
         try {
             const todo = todos.find(todo => todo.id === todoId);
-            const updatedFields = { completed: !todo.completed };
-            await patchTodo(todoId, updatedFields);
-            fetchData();
+            if (todo) {
+                const updatedFields = { completed: !todo.completed };
+                await patchTodo(todoId, updatedFields);
+                fetchData();
+            }
         } catch (error) {
             console.error('Error updating todo:', error);
         }
     };
 
-    const completeCount = () => {
-        return todos.filter(todo => todo.completed).length;
-    };
+    const completeCount = () => todos.filter(todo => todo.completed).length;
 
     const refreshData = async () => {
         const updatedTodos = await getAllTodo();
@@ -60,11 +66,6 @@ export default function Home() {
         } catch (error) {
             console.error('Error adding todo:', error);
         }
-    };
-
-    const handleDialogToggle = (todoId) => {
-        setDialogOpen(!isDialogOpen);
-        setTodoIdforEditDelete(todoId);
     };
 
     useEffect(() => {

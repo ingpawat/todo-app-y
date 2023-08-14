@@ -10,9 +10,9 @@ interface Todo {
 
 const createError = (operation: string) => new Error(`Error while ${operation} todo`);
 
-async function axiosRequest<T>(url: string, method: string, data?: any): Promise<T> {
+async function axiosRequest<T>(url: string, method: keyof typeof axios, data?: any): Promise<T> {
   try {
-    const response: AxiosResponse<T> = await axios[method](url, data);
+    const response: AxiosResponse<T> = await axios[method]<T>(url, data);
     return response.data;
   } catch (error) {
     throw createError(method.toLowerCase());
