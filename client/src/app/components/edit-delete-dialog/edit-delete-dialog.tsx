@@ -1,30 +1,20 @@
 import React, { useState } from 'react';
 import './edit-delete-dialog.scss';
-import { patchTodo, deleteTodo, getAllTodo } from '../../utils/fetchTodos';
+import { patchTodo, deleteTodo } from '../../utils/fetchTodos';
 
 const EditDeleteDialog = ({ todoId, title, refreshData }) => {
   const [newTitle, setNewTitle] = useState(title);
   const [isEditing, setIsEditing] = useState(false);
 
-  const fetchData = async () => {
-    try {
-      await getAllTodo();
-    } catch (error) {
-      console.error('Error fetching todos:', error);
-    }
-  };
-
-  const handleEditClick = async () => {
+  const handleEditClick = () => {
     setIsEditing(true);
-    fetchData();
   };
 
   const handleSaveClick = async () => {
     try {
       await patchTodo(todoId, { title: newTitle });
       setIsEditing(false);
-      console.log('Edit successful');
-      refreshData(); // Refresh the data here
+      refreshData();
     } catch (error) {
       console.error('Error editing todo:', error);
     }
@@ -33,17 +23,16 @@ const EditDeleteDialog = ({ todoId, title, refreshData }) => {
   const handleDeleteClick = async () => {
     try {
       await deleteTodo(todoId);
-      fetchData();
-      console.log('Delete successful');
+      refreshData();
     } catch (error) {
       console.error('Error deleting todo:', error);
     }
   };
 
-  const handleKeyDown = async (e) => {
+  const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      e.preventDefault(); // Prevent default form submission
-      await handleSaveClick(); // Save the data
+      e.preventDefault();
+      handleSaveClick();
     }
   };
 
@@ -60,14 +49,14 @@ const EditDeleteDialog = ({ todoId, title, refreshData }) => {
           />
         </div>
       ) : (
-        <>
+        <div className="action-buttons">
           <a className="action-button edit" onClick={handleEditClick}>
             Edit
           </a>
           <a className="action-button delete" onClick={handleDeleteClick}>
             Delete
           </a>
-        </>
+        </div>
       )}
     </div>
   );

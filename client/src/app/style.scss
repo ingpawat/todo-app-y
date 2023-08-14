@@ -1,229 +1,233 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 .main {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #D1D0D9;
-  font-family: 'Roboto', sans-serif;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #D1D0D9;
+    font-family: 'Roboto', sans-serif;
 }
 
 .container {
-  width: 80%;
-  max-width: 720px;
-  border-radius: 20px;
-  background: #F5F5F5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 20px; /* Added padding for spacing */
+    width: 80%;
+    max-width: 720px;
+    border-radius: 20px;
+    background: #F5F5F5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    /* Added padding for spacing */
 }
 
 .progress-box {
-  width: 100%;
-  max-width: 518px;
-  height: 123px;
-  border-radius: 20px;
-  background: #E07C7C;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 5%;
-
-  .left-side {
+    width: 100%;
+    max-width: 518px;
+    height: 123px;
+    border-radius: 20px;
+    background: #E07C7C;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
-    padding: 15px;
+    margin-top: 5%;
 
-    .progress-bar-center {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 99;
+    .left-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+
+        .progress-bar-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99;
+        }
     }
-  }
 
-  .progress-title {
-    color: #FFF;
-    font-family: Roboto;
-    font-size: 28px;
-    font-weight: 500;
-    line-height: normal;
-    margin: 0;
-  }
+    .progress-title {
+        color: #FFF;
+        font-family: Roboto;
+        font-size: 28px;
+        font-weight: 500;
+        line-height: normal;
+        margin: 0;
+    }
 
-  .completed-text {
-    color: #EBB9B8;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: normal;
-    margin: 0;
-  }
+    .completed-text {
+        color: #EBB9B8;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: normal;
+        margin: 0;
+    }
 }
 
 .task-container {
     width: 100%;
-  .task-filter-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    margin-bottom: 3%;
 
-    .task-title {
-      color: #000;
-      font-family: Roboto;
-      font-size: 24px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-      margin-top: 3%;
+    .task-filter-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        margin-bottom: 3%;
+
+        .task-title {
+            color: #000;
+            font-family: Roboto;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            margin-top: 3%;
+        }
+
+        .filter-dropdown {
+            width: 110px;
+            height: 29px;
+            border-radius: 10px;
+            background: #FFF;
+            margin-top: 3%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: row;
+            cursor: pointer;
+
+            p {
+                margin-left: 10%;
+                color: #000;
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+
+            .chevron-down {
+                margin-right: 10%;
+            }
+        }
     }
 
-    .filter-dropdown {
-      width: 110px;
-      height: 29px;
-      border-radius: 10px;
-      background: #FFF;
-      margin-top: 3%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-direction: row;
-      cursor: pointer;
+    .task-capsule {
+        width: 100%;
+        min-height: 46px;
+        border-radius: 9999px;
+        background: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        transition: opacity 0.5s ease-in-out;
+        margin-bottom: 1%;
+        padding: 10px;
 
-      p {
-        margin-left: 10%;
-        color: #000;
-        font-size: 13px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+        .tick-box {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 2px solid #585292;
+            cursor: pointer;
+        }
 
-      .chevron-down {
-        margin-right: 10%;
-      }
-    }
-  }
+        .todo-title,
+        .completed-todo {
+            flex: 1;
+            margin: 0 5px;
+            color: #2E2E2E;
+            font-family: Roboto;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
-  .task-capsule {
-    width: 100%;
-    min-height: 46px;
-    border-radius: 9999px;
-    background: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    transition: opacity 0.5s ease-in-out;
-    margin-bottom: 1%;
-    padding: 10px; /* Added padding for spacing */
+        .completed-todo {
+            text-decoration: line-through;
+        }
 
-    .tick-box {
-      width: 22px;
-      height: 22px;
-      border-radius: 6px;
-      border: 2px solid #585292;
-      cursor: pointer;
-    }
 
-    .todo-title, .completed-todo {
-      flex: 1;
-      margin: 0 5px;
-      color: #2E2E2E;
-      font-family: Roboto;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .completed-todo {
-        text-decoration: line-through;
-    }
-    
+        .edit-delete-dialog-warpper {
+            display: flex;
+            position: absolute;
+            transform: translateY(-50%);
+            z-index: 90;
+            width: 111px;
+            height: 81px;
+        }
 
-    .edit-delete-dialog-warpper {
-      position: absolute;
-      top: 50%;
-      right: 10%;
-      transform: translateY(-50%);
-      z-index: 90;
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 50;
+        }
     }
 
-    .background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      z-index: 50;
-    }
-  }
+    .task-capsule-add-todo {
+        width: 100%;
+        height: 46px;
+        border-radius: 9999px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        transition: opacity 0.5s ease-in-out;
+        margin-bottom: 5%;
 
-  .task-capsule-add-todo {
-    width: 100%;
-    height: 46px;
-    border-radius: 9999px;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    transition: opacity 0.5s ease-in-out;
-    margin-bottom: 5%;
-
-    input[type="text"],
-    .add-todo-type-field {
-      width: 100%;
-      height: 19px;
-      color: #BCBCBC;
-      font-family: Roboto;
-      font-size: 14px;
-      font-style
-      : normal;
-      font-weight: 400;
-      line-height: normal;
-      display: flex;
-      align-items: center;
-      padding-left: 10px;
-      border: none;
-      outline: none;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .container {
-      width: 90%;
+        input[type="text"],
+        .add-todo-type-field {
+            width: 100%;
+            height: 19px;
+            color: #BCBCBC;
+            font-family: Roboto;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            border: none;
+            outline: none;
+        }
     }
 
-    .task-container .task-capsule {
-      width: 100%;
-      margin-top: 5%;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
+    @media (max-width: 768px) {
+        .container {
+            width: 90%;
+        }
 
-  @media (max-width: 480px) {
-    .container {
-      width: 95%;
+        .task-container .task-capsule {
+            width: 100%;
+            margin-top: 5%;
+            flex-direction: column;
+            align-items: flex-start;
+        }
     }
 
-    .task-container .task-capsule {
-      margin-top: 3%;
+    @media (max-width: 480px) {
+        .container {
+            width: 95%;
+        }
+
+        .task-container .task-capsule {
+            margin-top: 3%;
+        }
     }
-  }
 }

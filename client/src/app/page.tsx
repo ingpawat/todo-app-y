@@ -72,7 +72,7 @@ export default function Home() {
         refreshData();
         if (progressBoxRef.current) {
             const width = progressBoxRef.current.offsetWidth;
-            setProgressBoxWidth((width - 30)); // Convert to percentage
+            setProgressBoxWidth((width - 30));
         }
     }, []);
 
@@ -135,6 +135,7 @@ export default function Home() {
                                     {/* 3 Dots click to open the edit delete dialog */}
                                     <a
                                         style={{ zIndex: 80 }}
+                                        className='dot-image'
                                         onClick={() => {
                                             setDialogOpen(true);
                                             setTodoIdforEditDelete(todo.id);
@@ -142,19 +143,19 @@ export default function Home() {
 
                                         <Image src={Dot} alt='Dot' width={17} height={17} style={{ cursor: 'pointer' }} />
                                     </a>
-
-                                    {isDialogOpen && todoIdforEditDelete === todo.id && (
-                                        <>
-                                            <div className='edit-delete-dialog-warpper' style={{ zIndex: 90 }} >
-                                                <EditDeleteDialog
-                                                    todoId={todoIdforEditDelete}
-                                                    key={todo.id}
-                                                    refreshData={refreshData} />
-                                            </div>
-                                            <div className='background' onClick={() => setDialogOpen(false)} style={{ zIndex: 50 }} />
-                                        </>
-                                    )}
-
+                                    <div>
+                                        {isDialogOpen && todoIdforEditDelete === todo.id && (
+                                            <>
+                                                <div className='edit-delete-dialog-warpper' style={{ zIndex: 90 }} >
+                                                    <EditDeleteDialog
+                                                        todoId={todoIdforEditDelete}
+                                                        key={todo.id}
+                                                        refreshData={refreshData} />
+                                                </div>
+                                                <div className='background' onClick={() => setDialogOpen(false)} style={{ zIndex: 50 }} />
+                                            </>
+                                        )}
+                                    </div>
                                 </div>
                             ))}
 
