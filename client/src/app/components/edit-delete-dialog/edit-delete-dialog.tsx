@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
 import './edit-delete-dialog.scss';
-import { patchTodo, deleteTodo } from '../../utils/fetchTodos';
+import { patchTodo, deleteTodo, getAllTodo } from '../../utils/fetchTodos';
 
 const EditDeleteDialog = ({ todoId, title, refreshData }) => {
   const [newTitle, setNewTitle] = useState(title);
   const [isEditing, setIsEditing] = useState(false);
 
+  const fetchData = async () => {
+    try {
+      await getAllTodo();
+    } catch (error) {
+      console.error('Error fetching todos:', error);
+    }
+  };
+
   const handleEditClick = async () => {
     setIsEditing(true);
+    fetchData();
   };
 
   const handleSaveClick = async () => {
@@ -15,6 +24,7 @@ const EditDeleteDialog = ({ todoId, title, refreshData }) => {
       await patchTodo(todoId, { title: newTitle });
       setIsEditing(false);
       console.log('Edit successful');
+      refreshData(); // Refresh the data here
     } catch (error) {
       console.error('Error editing todo:', error);
     }
@@ -23,10 +33,17 @@ const EditDeleteDialog = ({ todoId, title, refreshData }) => {
   const handleDeleteClick = async () => {
     try {
       await deleteTodo(todoId);
-      refreshData();
+      fetchData();
       console.log('Delete successful');
     } catch (error) {
       console.error('Error deleting todo:', error);
+    }
+  };
+
+  const handleKeyDown = async (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault(); // Prevent default form submission
+      await handleSaveClick(); // Save the data
     }
   };
 
@@ -39,10 +56,8 @@ const EditDeleteDialog = ({ todoId, title, refreshData }) => {
             className="edit-input"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
-          <button className="action-button save" onClick={handleSaveClick}>
-            Save
-          </button>
         </div>
       ) : (
         <>

@@ -21,8 +21,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 20px;
-  /* Added padding for spacing */
+  padding: 20px; /* Added padding for spacing */
 }
 
 .progress-box {
@@ -118,8 +117,7 @@
   flex-direction: row;
   transition: opacity 0.5s ease-in-out;
   margin-bottom: 1%;
-  padding: 10px;
-  /* Added padding for spacing */
+  padding: 10px; /* Added padding for spacing */
 }
 .task-container .task-capsule .tick-box {
   width: 22px;
@@ -128,8 +126,7 @@
   border: 2px solid #585292;
   cursor: pointer;
 }
-.task-container .task-capsule .todo-title,
-.task-container .task-capsule .completed-todo {
+.task-container .task-capsule .todo-title, .task-container .task-capsule .completed-todo {
   flex: 1 1;
   margin: 0 5px;
   color: #2E2E2E;
@@ -143,6 +140,9 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.task-container .task-capsule .completed-todo {
+  text-decoration: line-through;
 }
 .task-container .task-capsule .edit-delete-dialog-warpper {
   position: absolute;

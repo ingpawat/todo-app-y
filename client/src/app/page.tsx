@@ -72,17 +72,15 @@ export default function Home() {
         refreshData();
         if (progressBoxRef.current) {
             const width = progressBoxRef.current.offsetWidth;
-            setProgressBoxWidth((width-30)); // Convert to percentage
-          }
+            setProgressBoxWidth((width - 30)); // Convert to percentage
+        }
     }, []);
-
-    console.log(progressBoxWidth)
 
     return (
         <>
             <main className='main'>
                 <div className='container' >
-                    <div className='progress-box'  ref={progressBoxRef}>
+                    <div className='progress-box' ref={progressBoxRef}>
                         <div className="left-side">
                             <p className='progress-title'>Progress</p>
                             <div className='progress-bar-center'>
@@ -180,4 +178,4 @@ export default function Home() {
             </main>
         </>
     );
-}
+} 
