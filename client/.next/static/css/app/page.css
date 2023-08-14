@@ -102,6 +102,7 @@
   justify-content: space-between;
   flex-direction: row;
   cursor: pointer;
+  border: none;
 }
 .task-container .task-filter-container .filter-dropdown p {
   margin-left: 10%;
