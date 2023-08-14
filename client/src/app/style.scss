@@ -158,12 +158,18 @@
 
 
         .edit-delete-dialog-warpper {
+            // width: 20vw;
+            // height: 20vh;
             display: flex;
+            justify-content: end; /* Center content horizontally */
+            align-items: end; /* Center content vertically */
             position: absolute;
             transform: translateY(-50%);
             z-index: 90;
-            width: 111px;
-            height: 81px;
+            width: 518px;
+            height: 46px;
+            border: red solid 4px;
+            margin-left:15%
         }
 
         .background {

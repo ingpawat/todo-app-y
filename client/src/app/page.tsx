@@ -5,9 +5,9 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import { getAllTodo, patchTodo, postTodo } from './utils/fetchTodos';
 import Image from 'next/image';
 import TickBox from '../app/assets/tickBox.svg';
-import Dot from '../app/assets/3dot.svg'
+import Dot from '../app/assets/3dot.svg';
 import ChevronDown from '../app/assets/chevron-down.svg';
-import EditDeleteDialog from '@/app/components/edit-delete-dialog/edit-delete-dialog'
+import EditDeleteDialog from '@/app/components/edit-delete-dialog/edit-delete-dialog';
 
 export default function Home() {
     const [todos, setTodos] = useState([]);
@@ -19,7 +19,6 @@ export default function Home() {
     const [progressBoxWidth, setProgressBoxWidth] = useState(85);
     const progressBoxRef = useRef(null);
 
-
     const fetchData = async () => {
         try {
             const todosData = await getAllTodo();
@@ -30,7 +29,7 @@ export default function Home() {
         }
     };
 
-    const handleTickClick = async (todoId: string, updatedFields: any) => {
+    const handleTickClick = async (todoId: string) => {
         try {
             const todo = todos.find(todo => todo.id === todoId);
             const updatedFields = { completed: !todo.completed };
@@ -63,6 +62,11 @@ export default function Home() {
         }
     };
 
+    const handleDialogToggle = (todoId) => {
+        setDialogOpen(!isDialogOpen);
+        setTodoIdforEditDelete(todoId);
+    };
+
     useEffect(() => {
         setHowManyCompleted(completeCount());
     }, [todos]);
@@ -79,7 +83,7 @@ export default function Home() {
     return (
         <>
             <main className='main'>
-                <div className='container' >
+                <div className='container'>
                     <div className='progress-box' ref={progressBoxRef}>
                         <div className="left-side">
                             <p className='progress-title'>Progress</p>
@@ -114,25 +118,16 @@ export default function Home() {
                             </div>
                             {todos.map(todo => (
                                 <div className='task-capsule' key={todo.id}>
-                                    {/* Tick box */}
                                     <div
                                         className='tick-box'
-                                        onClick={() => handleTickClick(todo.id, '')}
-                                        style={{
-                                            backgroundColor: todo.completed ? '#585292' : 'transparent'
-                                        }}
-                                    >
+                                        onClick={() => handleTickClick(todo.id)}>
                                         <Image src={TickBox} alt='TickBox' width={17} height={17} />
                                     </div>
-
-                                    {/* Todo - Title */}
                                     <p
                                         className={todo.completed ? 'completed-todo' : 'todo-title'}
                                     >
                                         {todo.title}
                                     </p>
-
-                                    {/* 3 Dots click to open the edit delete dialog */}
                                     <a
                                         style={{ zIndex: 80 }}
                                         className='dot-image'
@@ -143,22 +138,22 @@ export default function Home() {
 
                                         <Image src={Dot} alt='Dot' width={17} height={17} style={{ cursor: 'pointer' }} />
                                     </a>
-                                    <div>
-                                        {isDialogOpen && todoIdforEditDelete === todo.id && (
-                                            <>
-                                                <div className='edit-delete-dialog-warpper' style={{ zIndex: 90 }} >
-                                                    <EditDeleteDialog
-                                                        todoId={todoIdforEditDelete}
-                                                        key={todo.id}
-                                                        refreshData={refreshData} />
-                                                </div>
-                                                <div className='background' onClick={() => setDialogOpen(false)} style={{ zIndex: 50 }} />
-                                            </>
-                                        )}
-                                    </div>
+                                    {isDialogOpen && todoIdforEditDelete === todo.id && (
+                                        <>
+                                            <div className='edit-delete-dialog-warpper' style={{ zIndex: 90 }}
+                                            // onClick={() => setDialogOpen(false)}
+                                            >
+                                                <EditDeleteDialog
+                                                    todoId={todoIdforEditDelete}
+                                                    title={todo.title}
+                                                    refreshData={refreshData}
+                                                />
+                                            </div>
+                                            <div className='background' onClick={() => setDialogOpen(false)} style={{ zIndex: 50 }} />
+                                        </>
+                                    )}
                                 </div>
                             ))}
-
                             <div className='task-capsule-add-todo'>
                                 <input
                                     className='add-todo-type-field'
@@ -167,7 +162,7 @@ export default function Home() {
                                     onChange={e => setNewTodoTitle(e.target.value)}
                                     onKeyDown={e => {
                                         if (e.key === 'Enter') {
-                                            handleAddTodo(newTodoTitle);
+                                            handleAddTodo();
                                         }
                                     }}
                                     placeholder='Add your todo...'
@@ -179,4 +174,4 @@ export default function Home() {
             </main>
         </>
     );
-} 
+}

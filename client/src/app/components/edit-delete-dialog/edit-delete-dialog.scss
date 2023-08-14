@@ -7,25 +7,26 @@
     height: 100vh;
 }
 
-.edit-field{
-    .edit-input {
-        width: 518px;
-        height: 46px;
-        border-radius: 9999px;
-        background: #FFF;
-        padding: 10px;
-        font-family: 'Roboto', sans-serif;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        border: none;
-    }
-}
-
-.dialog-container {
+.edit-input {
     width: 100%;
     height: 100%;
+    border-radius: 9999px;
+    background: #FFF;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: none;
+}
+.dialog-container-edit{
+    width: 1101px;
+    border: 4px solid green;
+}
+.dialog-container {
+    width: 111px;
+    height: 81px;
     border-radius: 10px;
     background: #FFF;
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.10);

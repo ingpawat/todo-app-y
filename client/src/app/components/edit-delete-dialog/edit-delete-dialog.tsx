@@ -37,15 +37,17 @@ const EditDeleteDialog = ({ todoId, title, refreshData }) => {
   };
 
   return (
-    <div className={`dialog-container ${isEditing ? '' : 'edit-input-container'}`}>
+<div className={isEditing ? 'dialog-container-edit' : 'dialog-container'}>
       {isEditing ? (
         <div className="edit-field">
           <input
             type="text"
             className="edit-input"
+            style={{ zIndex: 90, position: 'relative',marginRight: '100%' }}
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
             onKeyDown={handleKeyDown}
+            placeholder='Edit your todo and press enter ...'
           />
         </div>
       ) : (
