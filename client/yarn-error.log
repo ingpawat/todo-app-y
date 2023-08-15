@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add sass
+  /usr/local/bin/node /usr/local/bin/yarn add -D cypress @cypress/react @cypress/webpack-dev-server @testing-library/cypress html-webpack-plugin webpack webpack-dev-server
 
 PATH: 
   /Library/Frameworks/Python.framework/Versions/3.11/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin
@@ -14,16 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.npmjs.org/eslint-config-next: ESOCKETTIMEDOUT
-      at ClientRequest.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141517:19)
-      at Object.onceWrapper (node:events:628:28)
-      at ClientRequest.emit (node:events:514:28)
-      at TLSSocket.emitRequestTimeout (node:_http_client:840:9)
-      at Object.onceWrapper (node:events:628:28)
-      at TLSSocket.emit (node:events:526:35)
-      at Socket._onTimeout (node:net:589:8)
-      at listOnTimeout (node:internal/timers:573:17)
-      at process.processTimers (node:internal/timers:514:7)
+  Error: EACCES: permission denied, mkdir '/Users/ingpawat/todo-app-ingpawat/client/node_modules/cacache/node_modules/ssri'
 
 npm manifest: 
   {
@@ -37,16 +28,21 @@ npm manifest:
       "lint": "next lint"
     },
     "dependencies": {
+      "@ramonak/react-progress-bar": "^5.0.3",
+      "@types/next-auth": "^3.15.0",
       "@types/node": "20.4.9",
       "@types/react": "18.2.20",
       "@types/react-dom": "18.2.7",
+      "axios": "^1.4.0",
       "dotenv": "^16.3.1",
       "eslint": "8.46.0",
       "eslint-config-next": "13.4.13",
       "next": "13.4.13",
+      "next-auth": "^4.23.0",
       "node-sass": "^9.0.0",
       "react": "18.2.0",
       "react-dom": "18.2.0",
+      "react-lazy-load-image-component": "^1.6.0",
       "sass": "^1.65.1",
       "typescript": "5.1.6"
     }

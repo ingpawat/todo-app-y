@@ -26,5 +26,14 @@
     "react-lazy-load-image-component": "^1.6.0",
     "sass": "^1.65.1",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@cypress/react": "^7.0.3",
+    "@cypress/webpack-dev-server": "^3.5.2",
+    "@testing-library/cypress": "^9.0.0",
+    "cypress": "^12.17.3",
+    "html-webpack-plugin": "^5.5.3",
+    "webpack": "^5.88.2",
+    "webpack-dev-server": "^4.15.1"
   }
 }
