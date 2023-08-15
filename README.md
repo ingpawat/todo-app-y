@@ -35,7 +35,7 @@ git clone https://github.com/your-username/todo-list-app.git
 
 2. Navigate to the project directory:
 
-cd todo-list-app
+cd client
 
 
 3. Install the dependencies:
